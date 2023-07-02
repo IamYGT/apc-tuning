@@ -1,0 +1,27 @@
+ 	Options +FollowSymLinks
+	RewriteEngine On
+	RewriteBase /  
+	RewriteCond %{REQUEST_FILENAME} !-d
+	RewriteCond %{REQUEST_FILENAME}.php -f
+	RewriteRule ^(.*)$ $1.php
+	RewriteRule ^([a-z]+)\/?$ $1.php [NC]
+	
+ 
+	RewriteRule ^index$ index.php [L,QSA]    
+	RewriteRule ^news-detail$ index.php [L,QSA]    
+
+
+	RewriteRule news-detail/([a-zA-Z0-9_-]+)$ nd.php?url=$1 [L,QSA] 
+	RewriteRule haber/([a-zA-Z0-9_-]+)$ news-detail.php?url=$1 [L,QSA] 
+	RewriteRule service-detail/([a-zA-Z0-9_-]+)$ sd.php?url=$1 [L,QSA] 
+	#RewriteRule car/([a-zA-Z0-9_-]+)$ araclar.php?url=$1 [L,QSA] 
+	RewriteRule	^car/(.*)$ araclar.php
+ 
+ 	#RewriteRule ^car-detail/([a-zA-Z0-9_-]+)/([a-zA-Z0-9_-]+)/([a-zA-Z0-9_-]+)/([a-zA-Z0-9_-]+)$ /arac-detay.php?url=$1&url2=$2&url3=$3&url4=$4 [L,QSA]
+	RewriteRule	^car-detail/(.*)$ arac-detay.php 
+	
+	RewriteRule ^sitemapAraclar\.xml$ sitemapAraclar.php [L]
+	RewriteRule ^sitemap\.xml$ sitemap.php [L]
+	
+	ErrorDocument 404 https://www.apc-tuning.com/404
+
